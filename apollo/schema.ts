@@ -1,39 +1,10 @@
-import { gql } from 'apollo-server-micro';
+import { makeExecutableSchema } from 'graphql-tools';
+import typeDefs from './type-defs';
+import resolvers from './resolvers';
 
-const typeDefs = gql`
-  type Country {
-    id: ID!
-    name: String!
-    alpha2: String
-    alpha3: String
-    numeric: Int
-    lat: Int!
-    long: Int!
-    books: [Book!]!
-  }
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
 
-  type Book {
-    id: ID!
-    title: String!
-    author: String!
-    description: String!
-    cover: String!
-    smallCover: String!
-    averageRating: Float
-    ratingsCount: Int
-    categories: [String]
-    isbn10: String
-    isbn13: String
-  }
-
-  type Query {
-    getAllCountries: [Country!]!
-    getCountryByName(name: String!): Country!
-    getCountryById(id: ID!): Country!
-    getBooksByCountryName(countryName: String!): [Book]!
-    getBooksByCountryId(countryId: ID!): [Book]!
-    getBookById(bookId: ID!): Book!
-  }
-`;
-
-export default typeDefs;
+export default schema;
