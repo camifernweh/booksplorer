@@ -1,4 +1,4 @@
-import { Country, Book } from '../lib/types';
+import { Country } from '../lib/types';
 import * as helpers from './helpers';
 
 const resolvers = {

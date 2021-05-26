@@ -30,8 +30,6 @@ const typeDefs = gql`
     getAllCountries: [Country!]!
     getCountryByName(name: String!): Country!
     getCountryById(id: ID!): Country!
-    getBooksByCountryName(countryName: String!): [Book]!
-    getBooksByCountryId(countryId: ID!): [Book]!
   }
 `;
 

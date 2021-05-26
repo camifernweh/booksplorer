@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.18",
-    "@material-ui/core": "^4.11.3",
+    "@material-ui/core": "^4.11.4",
     "@types/mongodb": "^3.6.16",
     "apollo-server-micro": "^2.24.0",
     "dotenv": "^10.0.0",
