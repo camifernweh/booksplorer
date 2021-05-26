@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-micro';
 
 const typeDefs = gql`
   type Country {
-    id: ID!
+    _id: ID!
     name: String!
     alpha2: String
     alpha3: String
@@ -13,7 +13,7 @@ const typeDefs = gql`
   }
 
   type Book {
-    id: ID!
+    _id: ID!
     title: String!
     author: String!
     description: String!
@@ -32,7 +32,6 @@ const typeDefs = gql`
     getCountryById(id: ID!): Country!
     getBooksByCountryName(countryName: String!): [Book]!
     getBooksByCountryId(countryId: ID!): [Book]!
-    getBookById(bookId: ID!): Book!
   }
 `;
 
