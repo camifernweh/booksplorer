@@ -1,0 +1,21 @@
+.markerContainer {
+  position: absolute;
+  cursor: pointer;
+  min-width: 1.5rem;
+  min-height: 2.25rem;
+}
+
+.imgContainer {
+  display: flex;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-image: url('/fallback-cover.png');
+  background-color: rgb(44, 80, 117);
+}
+
+/*
+.markerImg {
+  border-radius: 7px;
+}
+42 30
+*/

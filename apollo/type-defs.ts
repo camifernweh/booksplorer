@@ -7,8 +7,8 @@ const typeDefs = gql`
     alpha2: String
     alpha3: String
     numeric: Int
-    lat: Int!
-    long: Int!
+    lat: Float!
+    long: Float!
     books: [Book!]!
   }
 
@@ -27,9 +27,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    getAllCountries: [Country!]!
-    getCountryByName(name: String!): Country!
-    getCountryById(id: ID!): Country!
+    countries: [Country!]!
+    countryByName(name: String!): Country!
+    countryById(id: ID!): Country!
   }
 `;
 

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { getTitleString } from '../lib/utils/strings';
+import styles from './Layout.module.css';
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -21,7 +22,7 @@ export default function Layout({
         />
         <title>{titleToBeDisplayed}</title>
       </Head>
-      <main>{children}</main>
+      <main className={styles.layout}>{children}</main>
     </div>
   );
 }

@@ -1,9 +1,49 @@
 import Layout from '../containers/Layout';
+import { Country } from '../lib/types';
+import client from '../apollo/client';
+import { gql } from '@apollo/client';
+import Map from '../components/Map/Map';
 
-export default function Home(): React.ReactElement {
+export interface CountriesProps {
+  countries: Country[];
+}
+
+export default function Home({
+  countries,
+}: CountriesProps): React.ReactElement {
   return (
     <Layout title="Home">
-      <p>Hello, World!</p>
+      <Map countries={countries} />
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query GetAllCountries {
+        countries {
+          id: _id
+          name
+          lat
+          long
+          books {
+            id: _id
+            title
+            author
+            description
+            cover
+            smallCover
+            categories
+          }
+        }
+      }
+    `,
+  });
+
+  return {
+    props: {
+      countries: data.countries,
+    },
+  };
 }

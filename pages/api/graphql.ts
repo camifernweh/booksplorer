@@ -1,7 +1,6 @@
 import { ApolloServer } from 'apollo-server-micro';
 import schema from '../../apollo/schema';
 import { MongoClient } from 'mongodb';
-require('dotenv').config();
 
 let db: unknown;
 

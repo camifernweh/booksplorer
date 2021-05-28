@@ -3,21 +3,17 @@ import * as helpers from './helpers';
 
 const resolvers = {
   Query: {
-    async getAllCountries(
-      _: unknown,
-      __: unknown,
-      context: any,
-    ): Promise<Country[]> {
+    async countries(_: unknown, __: unknown, context: any): Promise<Country[]> {
       return await helpers.getAllCountries(context);
     },
-    async getCountryByName(
+    async countryByName(
       _: unknown,
       { name }: { name: string },
       context: any,
     ): Promise<Country> {
       return await helpers.getCountryByName(name, context);
     },
-    async getCountryById(
+    async countryById(
       _: unknown,
       { id }: { id: string },
       context: any,
