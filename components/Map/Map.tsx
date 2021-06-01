@@ -22,6 +22,7 @@ export default function Map({ countries }: CountriesProps): React.ReactElement {
                 key={country.id}
                 lat={country.lat}
                 lng={country.long}
+                alpha2={country.alpha2}
                 bookCover={bookCover}
                 countryName={country.name}
                 numberOfBooks={country.books.length}

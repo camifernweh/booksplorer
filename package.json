@@ -13,6 +13,7 @@
     "@types/google-map-react": "^2.1.1",
     "@types/mongodb": "^3.6.16",
     "apollo-server-micro": "^2.24.0",
+    "country-code-emoji": "^2.3.0",
     "google-map-react": "^2.1.9",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.5",

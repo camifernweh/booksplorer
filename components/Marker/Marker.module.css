@@ -1,21 +1,26 @@
 .markerContainer {
   position: absolute;
   cursor: pointer;
-  min-width: 1.5rem;
-  min-height: 2.25rem;
+  min-width: 2.25rem;
+}
+
+.markerContainer:hover {
+  z-index: 2;
 }
 
 .imgContainer {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 2.25rem;
+  min-height: 3rem;
   border: 2px solid white;
-  border-radius: 5px;
-  background-image: url('/fallback-cover.png');
-  background-color: rgb(44, 80, 117);
+  background: url('/fallback-cover.png') center center/cover no-repeat
+    rgb(255, 255, 255);
 }
 
-/*
-.markerImg {
-  border-radius: 7px;
+.info {
+  position: absolute;
+  top: 3.25rem;
+  z-index: 2;
 }
-42 30
-*/

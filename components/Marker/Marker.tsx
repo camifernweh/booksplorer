@@ -6,12 +6,14 @@ import MarkerInfo from '../MarkerInfo/MarkerInfo';
 interface MarkerProps {
   lat: number;
   lng: number;
+  alpha2: string;
   countryName: string;
   numberOfBooks: number;
   bookCover: string;
 }
 
 export default function Marker({
+  alpha2,
   countryName,
   numberOfBooks,
   bookCover,
@@ -19,27 +21,33 @@ export default function Marker({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      className={styles.markerContainer}
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
-    >
-      <div className={styles.imgContainer}>
-        <Image
-          src={bookCover}
-          width={25}
-          height={35}
-          className={styles.markerImg}
-        ></Image>
+    <>
+      <div
+        className={styles.markerContainer}
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}
+      >
+        <div className={styles.imgContainer}>
+          <Image
+            src={bookCover}
+            layout="fill"
+            className={styles.markerImg}
+          ></Image>
+        </div>
       </div>
-
       {isHovered && (
-        <MarkerInfo countryName={countryName} numberOfBooks={numberOfBooks} />
+        <div className={styles.info}>
+          <MarkerInfo
+            alpha2={alpha2}
+            countryName={countryName}
+            numberOfBooks={numberOfBooks}
+          />
+        </div>
       )}
-    </div>
+    </>
   );
 }

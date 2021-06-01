@@ -31,8 +31,10 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#2c5075" />
 
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Josefin+Sans&amp;family=Lato&amp;display=swap"
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans&amp;family=Lato:wght@400;700&amp;display=swap"
             rel="stylesheet"
           />
           <link

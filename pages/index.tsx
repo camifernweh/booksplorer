@@ -27,6 +27,7 @@ export async function getStaticProps() {
           name
           lat
           long
+          alpha2
           books {
             id: _id
             title
