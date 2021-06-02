@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import styles from './Marker.module.css';
 import Image from 'next/image';
@@ -22,32 +23,38 @@ export default function Marker({
 
   return (
     <>
-      <div
-        className={styles.markerContainer}
-        onMouseEnter={() => {
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
+      <Link
+        href={`/countries/${countryName.toLowerCase().replace(/\s/g, '-')}`}
       >
-        <div className={styles.imgContainer}>
-          <Image
-            src={bookCover}
-            layout="fill"
-            className={styles.markerImg}
-          ></Image>
-        </div>
-      </div>
-      {isHovered && (
-        <div className={styles.info}>
-          <MarkerInfo
-            alpha2={alpha2}
-            countryName={countryName}
-            numberOfBooks={numberOfBooks}
-          />
-        </div>
-      )}
+        <a>
+          <div
+            className={styles.markerContainer}
+            onMouseEnter={() => {
+              setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsHovered(false);
+            }}
+          >
+            <div className={styles.imgContainer}>
+              <Image
+                src={bookCover}
+                layout="fill"
+                className={styles.markerImg}
+              ></Image>
+            </div>
+          </div>
+          {isHovered && (
+            <div className={styles.info}>
+              <MarkerInfo
+                alpha2={alpha2}
+                countryName={countryName}
+                numberOfBooks={numberOfBooks}
+              />
+            </div>
+          )}
+        </a>
+      </Link>
     </>
   );
 }

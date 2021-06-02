@@ -29,13 +29,7 @@ export async function getStaticProps() {
           long
           alpha2
           books {
-            id: _id
-            title
-            author
-            description
             cover
-            smallCover
-            categories
           }
         }
       }

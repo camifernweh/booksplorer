@@ -15,7 +15,7 @@ export default function Map({ countries }: CountriesProps): React.ReactElement {
         >
           {countries.map((country) => {
             let bookCover = getBookCoverUrl(country.books);
-            if (bookCover === 'fallback') bookCover = '/small-cover.png';
+            if (bookCover === 'fallback') bookCover = '/fallback-cover.png';
 
             return (
               <Marker
