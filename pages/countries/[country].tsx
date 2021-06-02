@@ -2,16 +2,19 @@ import Layout from '../../containers/Layout';
 import client from '../../apollo/client';
 import { gql } from '@apollo/client';
 import { createPathStrings, getNameFromPath } from '../../lib/utils/strings';
+import { Country as CountryInterface } from '../../lib/types';
+import { Typography } from '@material-ui/core';
+import BookList from '../../components/BookList/BookList';
 
-export default function Country({ country }) {
-  const books = country.books;
+interface CountryProps {
+  country: CountryInterface;
+}
 
+export default function Country({ country }: CountryProps): React.ReactElement {
   return (
     <Layout title={country.name}>
-      <p>{country.name}</p>
-      {books.map((book) => {
-        return <li key={book.title}>{book.title}</li>;
-      })}
+      <Typography variant="h4">{country.name}</Typography>
+      <BookList books={country.books} />
     </Layout>
   );
 }
@@ -42,7 +45,12 @@ export async function getStaticProps({ params }) {
         countryByName(name: $name) {
           name
           books {
+            id: _id
             title
+            author
+            description
+            cover
+            categories
           }
         }
       }
