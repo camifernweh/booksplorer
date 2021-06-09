@@ -1,10 +1,3 @@
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@material-ui/core';
 import styles from './BookList.module.css';
 import { Book } from '../../lib/types';
 import BookItem from '../BookItem/BookItem';

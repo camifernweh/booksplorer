@@ -38,15 +38,16 @@ export default function BookDetails({
         horizontal: 'center',
       }}
     >
-      <Paper>
-        <div className={styles.container}>
+      <Paper className={styles.container}>
+        <div className={styles.coverContainer}>
           <Image src={cover} alt="Book cover" width={150} height={200} />
-          <Typography>
-            {title}
-            {author}
-            {description}
-          </Typography>
         </div>
+        <div className={styles.info}>
+          <Typography variant="h5">{title}</Typography>
+          <Typography> {author}</Typography>
+          <Typography variant="body1">{description}</Typography>
+        </div>
+        <button onClick={handleClose}>CLOSE</button>
       </Paper>
     </Popover>
   );
