@@ -1,7 +1,17 @@
+.paper {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  max-height: 90vh;
+  padding: 2rem;
+}
+
 .container {
   display: flex;
-  width: 50vw;
-  min-height: 50vh;
   padding: 1rem;
 }
 

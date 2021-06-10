@@ -25,6 +25,7 @@ export default function Marker({
     <>
       <Link
         href={`/countries/${countryName.toLowerCase().replace(/\s/g, '-')}`}
+        passHref
       >
         <a>
           <div

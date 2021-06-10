@@ -24,27 +24,19 @@ export default function BookItem({
   description,
   cover,
 }: BookItemProps) {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleOpen = () => {
+    setIsOpen(true);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setIsOpen(false);
   };
-
-  const open = Boolean(anchorEl);
-  const popoverId = open ? 'simple-popover' : undefined;
 
   return (
     <div className={styles.container}>
-      <Card
-        aria-describedby={popoverId}
-        onClick={handleClick}
-        key={id}
-        className={styles.bookCard}
-      >
+      <Card onClick={handleOpen} key={id} className={styles.bookCard}>
         <CardActionArea
           style={{
             display: 'flex',
@@ -70,9 +62,7 @@ export default function BookItem({
         author={author}
         description={description}
         cover={cover}
-        popoverId={popoverId}
-        open={open}
-        anchorEl={anchorEl}
+        open={isOpen}
         handleClose={handleClose}
       />
     </div>

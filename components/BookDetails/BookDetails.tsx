@@ -1,4 +1,4 @@
-import { Popover, Paper, Typography } from '@material-ui/core';
+import { Popover, Paper, Typography, Button, Modal } from '@material-ui/core';
 import Image from 'next/image';
 import styles from './BookDetails.module.css';
 
@@ -7,9 +7,7 @@ interface BookDetailsProps {
   author: string;
   description: string;
   cover: string;
-  popoverId: string | undefined;
   open: boolean;
-  anchorEl: HTMLElement | null;
   handleClose: () => void;
 }
 
@@ -18,29 +16,12 @@ export default function BookDetails({
   author,
   description,
   cover,
-  popoverId,
   open,
-  anchorEl,
   handleClose,
 }: BookDetailsProps) {
   return (
-    <Popover
-      id={popoverId}
-      open={open}
-      anchorEl={anchorEl}
-      onClose={handleClose}
-      anchorReference="anchorPosition"
-      anchorPosition={{ top: 100, left: 375 }}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'left',
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'left',
-      }}
-    >
-      <Paper>
+    <Modal open={open} onClose={handleClose}>
+      <Paper className={styles.paper}>
         <div className={styles.container}>
           <div className={styles.coverContainer}>
             <Image src={cover} alt="Book cover" width={150} height={220} />
@@ -52,9 +33,11 @@ export default function BookDetails({
           </div>
         </div>
         <div className={styles.iconsContainer}>
-          <button onClick={handleClose}>CLOSE</button>
+          <Button variant="contained" onClick={handleClose}>
+            Add to Shelf
+          </Button>
         </div>
       </Paper>
-    </Popover>
+    </Modal>
   );
 }
