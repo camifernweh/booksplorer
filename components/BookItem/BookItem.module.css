@@ -1,5 +1,10 @@
+.container {
+  display: flex;
+}
+
 .bookCard {
   width: 15rem;
+  display: flex;
 }
 
 .bookCover {
@@ -8,7 +13,9 @@
 }
 
 .coverContainer {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  align-self: center;
 }

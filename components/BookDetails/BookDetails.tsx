@@ -29,25 +29,31 @@ export default function BookDetails({
       open={open}
       anchorEl={anchorEl}
       onClose={handleClose}
+      anchorReference="anchorPosition"
+      anchorPosition={{ top: 100, left: 375 }}
       anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
+        vertical: 'top',
+        horizontal: 'left',
       }}
       transformOrigin={{
         vertical: 'top',
-        horizontal: 'center',
+        horizontal: 'left',
       }}
     >
-      <Paper className={styles.container}>
-        <div className={styles.coverContainer}>
-          <Image src={cover} alt="Book cover" width={150} height={200} />
+      <Paper>
+        <div className={styles.container}>
+          <div className={styles.coverContainer}>
+            <Image src={cover} alt="Book cover" width={150} height={220} />
+          </div>
+          <div className={styles.info}>
+            <Typography variant="h5">{title}</Typography>
+            <Typography> {author}</Typography>
+            <Typography variant="body1">{description}</Typography>
+          </div>
         </div>
-        <div className={styles.info}>
-          <Typography variant="h5">{title}</Typography>
-          <Typography> {author}</Typography>
-          <Typography variant="body1">{description}</Typography>
+        <div className={styles.iconsContainer}>
+          <button onClick={handleClose}>CLOSE</button>
         </div>
-        <button onClick={handleClose}>CLOSE</button>
       </Paper>
     </Popover>
   );
