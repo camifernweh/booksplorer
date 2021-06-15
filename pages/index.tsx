@@ -15,12 +15,11 @@ export default function Home({
   return (
     <Layout title="Home">
       <Header />
-      {/*<Map countries={countries} />*/}
+      <Map countries={countries} />
     </Layout>
   );
 }
 
-/*
 export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
@@ -45,4 +44,3 @@ export async function getStaticProps() {
     },
   };
 }
-*/
