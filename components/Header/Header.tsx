@@ -30,11 +30,13 @@ export default function Header(): React.ReactElement {
           }}
         />
         <div className={styles.arrowContainer}>
-          <ExpandMoreIcon
-            color="secondary"
-            style={{ fontSize: '1.8rem' }}
-            className={styles.arrow}
-          />
+          <a href="#explore">
+            <ExpandMoreIcon
+              color="secondary"
+              style={{ fontSize: '1.8rem' }}
+              className={styles.arrow}
+            />
+          </a>
         </div>
       </div>
       {!inView && <Navbar />}

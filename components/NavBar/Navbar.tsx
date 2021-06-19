@@ -4,7 +4,7 @@ import styles from './NavBar.module.css';
 
 export default function NavBar() {
   return (
-    <header className={`${styles.nav} ${styles.navVisible}`}>
+    <header className={styles.nav}>
       <Link href="/">
         <a>
           <img src="/booksplorer-blue.png" className={styles.logo}></img>

@@ -50,8 +50,20 @@ export default function BookItem({
             <CardMedia image={cover} className={styles.bookCover} />
           </div>
           <CardContent>
-            <Typography variant="h6">{title}</Typography>
-            <Typography variant="h6" style={{ fontSize: '0.9rem' }}>
+            <Typography
+              variant="h6"
+              style={{ paddingLeft: '0.1rem', fontSize: '1.2rem' }}
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{
+                paddingLeft: '0.1rem',
+                fontSize: '0.9rem',
+                color: '#808080',
+              }}
+            >
               {author}
             </Typography>
           </CardContent>

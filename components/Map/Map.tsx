@@ -7,7 +7,7 @@ import { getBookCoverUrl } from '../../lib/utils/strings';
 export default function Map({ countries }: CountriesProps): React.ReactElement {
   return (
     <>
-      <div className={styles.mapContainer}>
+      <div id="explore" className={styles.mapContainer}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_MAPS_API_KEY }}
           defaultCenter={{ lat: 24.44, lng: -35.35 }}

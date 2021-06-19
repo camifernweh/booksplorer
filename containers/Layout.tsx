@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { getTitleString } from '../lib/utils/strings';
 import styles from './Layout.module.css';
+import NavBar from '../components/NavBar/Navbar';
 import Footer from '../components/Footer/Footer';
 
 interface LayoutProps {
@@ -13,6 +14,7 @@ export default function Layout({
   title,
 }: LayoutProps): React.ReactElement {
   const titleToBeDisplayed = getTitleString(title);
+  const isHome = title === 'Home';
 
   return (
     <div>
@@ -23,7 +25,12 @@ export default function Layout({
         />
         <title>{titleToBeDisplayed}</title>
       </Head>
-      <main className={styles.layout}>{children}</main>
+      {!isHome && <NavBar />}
+      <main
+        className={isHome ? styles.layout : `${styles.layout} ${styles.margin}`}
+      >
+        {children}
+      </main>
       <Footer />
     </div>
   );

@@ -13,7 +13,7 @@ export default function Footer(): React.ReactElement {
         style={{ fontSize: '1rem' }}
         className={styles.footer}
       >
-        &copy; {year} Booksplorer. All rights reserved.
+        &copy; {year} Booksplorer
       </Typography>
     </footer>
   );
