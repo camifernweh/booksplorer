@@ -39,7 +39,7 @@ export default function BookDetails({
 
   const handleClick = () => {
     if (!isOnShelf) {
-      const book = { country, title, author, description, cover };
+      const book = { id, country, title, author, description, cover };
       localStorage.setItem(id, JSON.stringify(book));
       setIsOnShelf(true);
     } else {

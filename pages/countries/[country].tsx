@@ -13,9 +13,6 @@ interface CountryProps {
 export default function Country({ country }: CountryProps): React.ReactElement {
   return (
     <Layout title={country.name}>
-      <div style={{ width: '90vw', marginTop: '1rem', padding: '1.1rem' }}>
-        <Typography variant="h4">{country.name}</Typography>
-      </div>
       <BookList country={country.name} books={country.books} />
     </Layout>
   );
