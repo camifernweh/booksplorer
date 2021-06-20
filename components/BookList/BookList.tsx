@@ -3,10 +3,14 @@ import { Book } from '../../lib/types';
 import BookItem from '../BookItem/BookItem';
 
 interface BookListProps {
+  country: string;
   books: Book[];
 }
 
-export default function BookList({ books }: BookListProps): React.ReactElement {
+export default function BookList({
+  country,
+  books,
+}: BookListProps): React.ReactElement {
   return (
     <div className={styles.listContainer}>
       {books.map((book) => {
@@ -17,6 +21,8 @@ export default function BookList({ books }: BookListProps): React.ReactElement {
 
         return (
           <BookItem
+            key={book.id}
+            country={country}
             id={book.id}
             title={book.title}
             author={book.author}

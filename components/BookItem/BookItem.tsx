@@ -10,6 +10,7 @@ import BookDetails from '../BookDetails/BookDetails';
 import styles from './BookItem.module.css';
 
 interface BookItemProps {
+  country: string;
   id: string;
   title: string;
   author: string;
@@ -18,6 +19,7 @@ interface BookItemProps {
 }
 
 export default function BookItem({
+  country,
   id,
   title,
   author,
@@ -70,6 +72,8 @@ export default function BookItem({
         </CardActionArea>
       </Card>
       <BookDetails
+        country={country}
+        id={id}
         title={title}
         author={author}
         description={description}

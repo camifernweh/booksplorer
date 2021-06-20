@@ -3,10 +3,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 75%;
+  max-width: 60%;
   max-height: 90vh;
   padding: 1.2rem;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.closeIcon {
+  cursor: pointer;
+  align-self: flex-end;
 }
 
 .container {
@@ -22,10 +29,27 @@
 .coverContainer {
   min-width: 10rem;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0 2rem 1rem 1rem;
 }
 
 .iconsContainer {
   display: flex;
   padding: 1rem;
+}
+
+@media (max-width: 680px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .coverContainer {
+    align-self: center;
+    margin: 0 1rem 1rem 1rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .paper {
+    max-width: 80%;
+  }
 }
