@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Paper, Typography, Button, Modal } from '@material-ui/core';
+import { Paper, Typography, Modal } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import AddIcon from '@material-ui/icons/Add';
-import CheckIcon from '@material-ui/icons/Check';
 import Image from 'next/image';
+import ShelfButton from '../ShelfButton/ShelfButton';
 import styles from './BookDetails.module.css';
 
 interface BookDetailsProps {
@@ -31,13 +30,20 @@ export default function BookDetails({
     return Boolean(localStorage.getItem(id));
   };
 
+  const checkRead = (title: string): boolean => {
+    return Boolean(localStorage.getItem(title));
+  };
+
   const [isOnShelf, setIsOnShelf] = useState(false);
+  const [isMarkedAsRead, setMarkedAsRead] = useState(false);
 
   useEffect(() => {
     setIsOnShelf(checkShelf(id));
+    setMarkedAsRead(checkRead(title));
   }, []);
 
-  const handleClick = () => {
+  const handleToggleFromShelf = () => {
+    // save item by id
     if (!isOnShelf) {
       const book = { id, country, title, author, description, cover };
       localStorage.setItem(id, JSON.stringify(book));
@@ -45,6 +51,26 @@ export default function BookDetails({
     } else {
       localStorage.removeItem(id);
       setIsOnShelf(false);
+    }
+  };
+
+  const handleMarkAsRead = () => {
+    // save item by title
+    if (!isMarkedAsRead) {
+      const book = {
+        id,
+        country,
+        title,
+        author,
+        description,
+        cover,
+        read: true,
+      };
+      localStorage.setItem(title, JSON.stringify(book));
+      setMarkedAsRead(true);
+    } else {
+      localStorage.removeItem(title);
+      setMarkedAsRead(false);
     }
   };
 
@@ -78,14 +104,18 @@ export default function BookDetails({
           </div>
         </div>
         <div className={styles.iconsContainer}>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={!isOnShelf ? <AddIcon /> : <CheckIcon />}
-            onClick={handleClick}
-          >
-            My Shelf
-          </Button>
+          <ShelfButton
+            mainText="Want to read"
+            isOnShelf={isOnShelf}
+            handleToggleFromShelf={handleToggleFromShelf}
+          />
+          <ShelfButton
+            mainText="Mark as read"
+            toggleText="Read"
+            bookIcon
+            isMarkedAsRead={isMarkedAsRead}
+            handleMarkAsRead={handleMarkAsRead}
+          />
         </div>
       </Paper>
     </Modal>

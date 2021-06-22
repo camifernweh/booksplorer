@@ -15,7 +15,9 @@ export default function BookList({
   return (
     <>
       <div style={{ width: '90vw', marginTop: '1rem', padding: '1.1rem' }}>
-        <Typography variant="h4">{country}</Typography>
+        <Typography variant="h4" style={{ fontSize: '1.8rem' }}>
+          {country}
+        </Typography>
       </div>
       <div className={styles.listContainer}>
         {books.map((book) => {

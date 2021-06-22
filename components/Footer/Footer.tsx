@@ -5,13 +5,12 @@ export default function Footer(): React.ReactElement {
   const year: string = new Date().getFullYear().toString();
 
   return (
-    <footer>
+    <footer className={styles.footer}>
       <Typography
         variant="body1"
         align="center"
         color="secondary"
         style={{ fontSize: '1rem' }}
-        className={styles.footer}
       >
         &copy; {year} Booksplorer
       </Typography>

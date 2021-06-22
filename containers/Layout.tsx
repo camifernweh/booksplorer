@@ -17,7 +17,7 @@ export default function Layout({
   const isHome = title === 'Home';
 
   return (
-    <div>
+    <div className={styles.layout}>
       <Head>
         <meta
           name="viewport"
@@ -27,7 +27,7 @@ export default function Layout({
       </Head>
       {!isHome && <NavBar />}
       <main
-        className={isHome ? styles.layout : `${styles.layout} ${styles.margin}`}
+        className={isHome ? styles.main : `${styles.main} ${styles.margin}`}
       >
         {children}
       </main>

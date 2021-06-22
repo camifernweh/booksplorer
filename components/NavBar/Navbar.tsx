@@ -11,13 +11,23 @@ export default function NavBar() {
         </a>
       </Link>
       <div>
+        <Link href="/#explore">
+          <a className={styles.link}>
+            <Button
+              size="large"
+              style={{ textTransform: 'none', fontSize: '1.1rem' }}
+            >
+              Explore
+            </Button>
+          </a>
+        </Link>
         <Link href="/shelf">
           <a className={styles.link}>
             <Button
               size="large"
               style={{ textTransform: 'none', fontSize: '1.1rem' }}
             >
-              My Shelf
+              My Books
             </Button>
           </a>
         </Link>

@@ -1,10 +1,14 @@
 import Layout from '../containers/Layout';
-import Shelf from '../components/Shelf/Shelf';
+import ShelfWantToRead from '../components/ShelfWantToRead/ShelfWantToRead';
+import ShelfRead from '../components/ShelfRead/ShelfRead';
 
 export default function MyShelf(): React.ReactElement {
   return (
     <Layout title="Shelf">
-      <Shelf />
+      <ShelfWantToRead />
+
+      <p>Read:</p>
+      <ShelfRead />
     </Layout>
   );
 }
