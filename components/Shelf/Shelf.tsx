@@ -1,26 +1,45 @@
 import { useState, useEffect } from 'react';
 import BookList from '../BookList/BookList';
-import styles from './Shelf.module.css';
+
+const getClientSideProps = () => {
+  const countriesArr = [];
+  const books = [];
+
+  for (let i = 0; i < localStorage.length; i++) {
+    let book = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    if (book.country && book.id) {
+      books.push(book);
+      if (!countriesArr.includes(book.country)) {
+        countriesArr.push(book.country);
+      }
+    }
+  }
+  const countries = countriesArr.sort();
+  return { countries, books };
+};
 
 export default function Shelf(): React.ReactElement {
-  const getClientSideProps = () => {
-    const arr = [];
-
-    for (let i = 0; i < localStorage.length; i++) {
-      arr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-    }
-    return arr;
-  };
-
+  const [countries, setCountries] = useState([]);
   const [books, setBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setBooks(getClientSideProps());
-    setIsLoading(false);
+    const { countries, books } = getClientSideProps();
+    setCountries(countries);
+    setBooks(books);
   }, []);
 
-  console.log(books);
-
-  return <BookList country="not yet" books={books}></BookList>;
+  return (
+    <>
+      {countries.map((country) => {
+        const filteredBooks = books.filter((book) => book.country === country);
+        return (
+          <BookList
+            key={country}
+            country={country}
+            books={filteredBooks}
+          ></BookList>
+        );
+      })}
+    </>
+  );
 }
