@@ -8,7 +8,7 @@ const getShelfProps = () => {
 
   for (let i = 0; i < localStorage.length; i++) {
     let book = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    if (!book.read) {
+    if (book.id && !book.read) {
       shelfBooks.push(book);
       if (!countriesArr.includes(book.country)) {
         countriesArr.push(book.country);
@@ -20,36 +20,47 @@ const getShelfProps = () => {
 };
 
 export default function ShelfWantToRead(): React.ReactElement {
-  const [shelfCountries, setShelfCountries] = useState([]);
-  const [shelfBooks, setShelfBooks] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const { shelfCountries, shelfBooks } = getShelfProps();
-    setShelfCountries(shelfCountries);
-    setShelfBooks(shelfBooks);
-  }, [shelfBooks]);
+
+    setCountries(shelfCountries);
+    setBooks(shelfBooks);
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
-      {shelfCountries.length ? (
-        shelfCountries.map((country) => {
-          const filteredBooks = shelfBooks.filter(
-            (book) => book.country === country,
-          );
-          return (
-            <BookList
-              key={country}
-              country={country}
-              books={filteredBooks}
-            ></BookList>
-          );
-        })
-      ) : (
-        <Typography>
-          You haven't added any books to your shelf yet.{' '}
-          <a href="/#explore">Go explore!</a>
-        </Typography>
-      )}
+      {isLoading && <Typography>Loading...</Typography>}
+      {!isLoading &&
+        (countries.length ? (
+          countries.map((country) => {
+            const filteredBooks = books.filter(
+              (book) => book.country === country,
+            );
+            if (!filteredBooks.length) return <></>;
+            return (
+              <BookList
+                key={country}
+                country={country}
+                books={filteredBooks}
+                shelf
+              ></BookList>
+            );
+          })
+        ) : (
+          <>
+            <Typography align="center">
+              You haven't added any books to your shelf yet.
+            </Typography>
+            <Typography align="center">
+              <a href="/#explore">Go explore!</a>
+            </Typography>
+          </>
+        ))}
     </>
   );
 }

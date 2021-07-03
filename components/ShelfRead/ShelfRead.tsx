@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Typography } from '@material-ui/core';
 import BookList from '../BookList/BookList';
 
 const getReadProps = () => {
@@ -7,7 +8,7 @@ const getReadProps = () => {
 
   for (let i = 0; i < localStorage.length; i++) {
     let book = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    if (book.read) {
+    if (book.id && book.read) {
       readBooks.push(book);
       if (!countriesArr.includes(book.country)) {
         countriesArr.push(book.country);
@@ -19,29 +20,41 @@ const getReadProps = () => {
 };
 
 export default function ShelfRead() {
-  const [readCountries, setReadCountries] = useState([]);
-  const [readBooks, setReadBooks] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const { readCountries, readBooks } = getReadProps();
-    setReadCountries(readCountries);
-    setReadBooks(readBooks);
-  }, [readBooks]);
+    setCountries(readCountries);
+    setBooks(readBooks);
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
-      {readCountries.map((country) => {
-        const filteredBooks = readBooks.filter(
-          (book) => book.country === country,
-        );
-        return (
-          <BookList
-            key={country}
-            country={country}
-            books={filteredBooks}
-          ></BookList>
-        );
-      })}
+      {isLoading && <Typography>Loading...</Typography>}
+      {!isLoading &&
+        (countries.length ? (
+          countries.map((country) => {
+            const filteredBooks = books.filter(
+              (book) => book.country === country,
+            );
+            if (!filteredBooks.length) return <></>;
+            return (
+              <BookList
+                key={country}
+                country={country}
+                books={filteredBooks}
+                shelf
+              ></BookList>
+            );
+          })
+        ) : (
+          <Typography align="center">
+            You haven't read any books from our list yet.
+          </Typography>
+        ))}
     </>
   );
 }

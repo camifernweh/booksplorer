@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react';
+import { useState } from 'react';
 import {
   Card,
   CardActionArea,
@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import BookDetails from '../BookDetails/BookDetails';
 import styles from './BookItem.module.css';
+import { Book } from '../../lib/types';
 
 interface BookItemProps {
   country: string;
@@ -16,6 +17,8 @@ interface BookItemProps {
   author: string;
   description: string;
   cover: string;
+  shelf?: boolean;
+  filterBooks?: (id: string) => void;
 }
 
 export default function BookItem({
@@ -25,6 +28,8 @@ export default function BookItem({
   author,
   description,
   cover,
+  shelf,
+  filterBooks,
 }: BookItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -80,6 +85,8 @@ export default function BookItem({
         cover={cover}
         open={isOpen}
         handleClose={handleClose}
+        shelf={shelf}
+        filterBooks={filterBooks}
       />
     </div>
   );

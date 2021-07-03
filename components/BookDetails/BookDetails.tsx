@@ -4,6 +4,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Image from 'next/image';
 import ShelfButton from '../ShelfButton/ShelfButton';
 import styles from './BookDetails.module.css';
+import { Book } from '../../lib/types';
 
 interface BookDetailsProps {
   country: string;
@@ -13,8 +14,18 @@ interface BookDetailsProps {
   description: string;
   cover: string;
   open: boolean;
+  shelf?: boolean;
+  filterBooks?: (id: string) => void;
   handleClose: () => void;
 }
+
+const checkShelf = (id: string): boolean => {
+  return Boolean(localStorage.getItem(id));
+};
+
+const checkRead = (title: string): boolean => {
+  return Boolean(localStorage.getItem(title));
+};
 
 export default function BookDetails({
   country,
@@ -24,23 +35,17 @@ export default function BookDetails({
   description,
   cover,
   open,
+  shelf,
+  filterBooks,
   handleClose,
 }: BookDetailsProps) {
-  const checkShelf = (id: string): boolean => {
-    return Boolean(localStorage.getItem(id));
-  };
-
-  const checkRead = (title: string): boolean => {
-    return Boolean(localStorage.getItem(title));
-  };
-
   const [isOnShelf, setIsOnShelf] = useState(false);
   const [isMarkedAsRead, setMarkedAsRead] = useState(false);
 
   useEffect(() => {
     setIsOnShelf(checkShelf(id));
     setMarkedAsRead(checkRead(title));
-  }, []);
+  }, [isOnShelf, isMarkedAsRead]);
 
   const handleToggleFromShelf = () => {
     // save item by id
@@ -51,11 +56,12 @@ export default function BookDetails({
     } else {
       localStorage.removeItem(id);
       setIsOnShelf(false);
+      if (shelf) filterBooks(id);
     }
   };
 
   const handleMarkAsRead = () => {
-    // save item by title
+    // save item by title and add 'read' property
     if (!isMarkedAsRead) {
       const book = {
         id,
@@ -71,6 +77,7 @@ export default function BookDetails({
     } else {
       localStorage.removeItem(title);
       setMarkedAsRead(false);
+      if (shelf) filterBooks(id);
     }
   };
 
