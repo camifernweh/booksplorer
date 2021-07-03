@@ -59,6 +59,10 @@ export const createPathStrings = (countries: Country[]): Path[] => {
   return paths;
 };
 
+export const getPathFromName = (name: string): string => {
+  return name.toLowerCase().replace(/\s/g, '-');
+};
+
 export const getNameFromPath = (name: string): string => {
   if (name === 'guinea-bissau') return 'Guinea-Bissau';
   else if (name === 'timor-leste') return 'Timor-Leste';
