@@ -10,25 +10,20 @@ interface BookListProps {
   country: string;
   books: Book[];
   shelf?: boolean;
+  filterBooks?: (id: string) => void;
 }
 
 export default function BookList({
   country,
   books,
   shelf,
+  filterBooks,
 }: BookListProps): React.ReactElement {
-  const [bookList, setBookList] = useState(books);
-
-  const filterBooks = (id: string): void => {
-    const filtered = books.filter((book) => book.id !== id);
-    setBookList(filtered);
-  };
-
   const pathName = getPathFromName(country);
 
   return (
     <>
-      {!bookList.length ? (
+      {!books.length ? (
         <></>
       ) : (
         <>
@@ -44,7 +39,7 @@ export default function BookList({
             </Typography>
           </div>
           <div className={styles.listContainer}>
-            {bookList.map((book) => {
+            {books.map((book) => {
               let cover: string;
               book.cover.includes('i.imgur')
                 ? (cover = '/fallback-cover.png')

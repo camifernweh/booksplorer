@@ -31,6 +31,11 @@ export default function ShelfRead() {
     setIsLoading(false);
   }, []);
 
+  const filterBooks = (id: string): void => {
+    const filtered = books.filter((book) => book.id !== id);
+    setBooks(filtered);
+  };
+
   return (
     <>
       {isLoading && <Typography>Loading...</Typography>}
@@ -47,6 +52,7 @@ export default function ShelfRead() {
                 country={country}
                 books={filteredBooks}
                 shelf
+                filterBooks={filterBooks}
               ></BookList>
             );
           })
