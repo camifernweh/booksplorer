@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import BookList from '../BookList/BookList';
+import styles from './ShelfWantToRead.module.css';
 
 const getShelfProps = () => {
   const countriesArr = [];
@@ -58,14 +59,14 @@ export default function ShelfWantToRead(): React.ReactElement {
             );
           })
         ) : (
-          <>
-            <Typography align="center">
+          <div className={styles.container}>
+            <Typography align="center" style={{ fontSize: '1.1rem' }}>
               You haven't added any books to your shelf yet.
             </Typography>
-            <Typography align="center">
+            <Typography align="center" style={{ fontSize: '1.1rem' }}>
               <a href="/#explore">Go explore!</a>
             </Typography>
-          </>
+          </div>
         ))}
     </>
   );
