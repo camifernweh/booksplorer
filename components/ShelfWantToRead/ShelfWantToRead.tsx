@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import BookList from '../BookList/BookList';
 import styles from './ShelfWantToRead.module.css';
+import { FormatColorReset } from '@material-ui/icons';
 
 const getShelfProps = () => {
   const countriesArr = [];
@@ -24,6 +25,7 @@ export default function ShelfWantToRead(): React.ReactElement {
   const [countries, setCountries] = useState([]);
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasBeenEmptied, setHasBeenEmptied] = useState(false);
 
   useEffect(() => {
     const { shelfCountries, shelfBooks } = getShelfProps();
@@ -35,39 +37,50 @@ export default function ShelfWantToRead(): React.ReactElement {
 
   const filterBooks = (id: string): void => {
     const filtered = books.filter((book) => book.id !== id);
+    if (!filtered.length) setHasBeenEmptied(true);
+
     setBooks(filtered);
   };
 
+  const empty = (
+    <div className={styles.container}>
+      <Typography align="center" style={{ fontSize: '1.1rem' }}>
+        You haven't added any books to your shelf yet.
+      </Typography>
+      <Typography align="center" style={{ fontSize: '1.1rem' }}>
+        <a href="/#explore">Go explore!</a>
+      </Typography>
+    </div>
+  );
+
   return (
     <>
-      {isLoading && <Typography>Loading...</Typography>}
+      {isLoading && (
+        <div className={styles.container}>
+          <Typography align="center" style={{ fontSize: '1.2rem' }}>
+            Loading...
+          </Typography>
+        </div>
+      )}
       {!isLoading &&
-        (countries.length ? (
-          countries.map((country) => {
-            const filteredBooks = books.filter(
-              (book) => book.country === country,
-            );
-            if (!filteredBooks.length) return <></>;
-            return (
-              <BookList
-                key={country}
-                country={country}
-                books={filteredBooks}
-                shelf
-                filterBooks={filterBooks}
-              ></BookList>
-            );
-          })
-        ) : (
-          <div className={styles.container}>
-            <Typography align="center" style={{ fontSize: '1.1rem' }}>
-              You haven't added any books to your shelf yet.
-            </Typography>
-            <Typography align="center" style={{ fontSize: '1.1rem' }}>
-              <a href="/#explore">Go explore!</a>
-            </Typography>
-          </div>
-        ))}
+        (countries.length
+          ? countries.map((country) => {
+              const filteredBooks = books.filter(
+                (book) => book.country === country,
+              );
+              if (!filteredBooks.length) return <></>;
+              return (
+                <BookList
+                  key={country}
+                  country={country}
+                  books={filteredBooks}
+                  shelf
+                  filterBooks={filterBooks}
+                ></BookList>
+              );
+            })
+          : empty)}
+      {hasBeenEmptied ? empty : <></>}
     </>
   );
 }
