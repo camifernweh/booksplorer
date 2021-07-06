@@ -1,44 +1,29 @@
 import Link from 'next/link';
-import { Button } from '@material-ui/core';
+import { Typography, useMediaQuery } from '@material-ui/core';
 import styles from './NavBar.module.css';
 
 export default function NavBar() {
+  const breakPoint = useMediaQuery('(max-width:600px)');
+
   return (
     <header className={styles.nav}>
       <Link href="/">
         <a>
-          <img src="/booksplorer-blue.png" className={styles.logo}></img>
+          <img
+            src={breakPoint ? '/monogram.png' : '/booksplorer-blue.png'}
+            className={breakPoint ? styles.logoImg : styles.fullLogo}
+          ></img>
         </a>
       </Link>
-      <div>
-        <Link href="/#explore">
-          <a className={styles.link}>
-            <Button
-              size="large"
-              style={{ textTransform: 'none', fontSize: '1.1rem' }}
-            >
-              Explore
-            </Button>
-          </a>
-        </Link>
+      <div className={styles.linkContainer}>
         <Link href="/shelf">
           <a className={styles.link}>
-            <Button
-              size="large"
-              style={{ textTransform: 'none', fontSize: '1.1rem' }}
-            >
-              My Books
-            </Button>
+            <Typography>My Books</Typography>
           </a>
         </Link>
-        <Link href="/about">
+        <Link href="/#explore">
           <a className={styles.link}>
-            <Button
-              size="large"
-              style={{ textTransform: 'none', fontSize: '1.1rem' }}
-            >
-              About
-            </Button>
+            <Typography>Explore</Typography>
           </a>
         </Link>
       </div>

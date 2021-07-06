@@ -12,10 +12,41 @@
   border-bottom: 2px solid #eee;
 }
 
-.logo {
-  width: 12.5rem;
+.fullLogo {
+  width: 13rem;
+}
+
+.logoImg {
+  margin-left: 0.5rem;
+  width: 2.5rem;
+}
+
+.linkContainer {
+  display: flex;
+  align-items: center;
 }
 
 .link {
-  margin-right: 0.5rem;
+  color: rgb(44, 80, 117);
+  text-decoration: none;
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+.link:visited {
+  color: rgb(44, 80, 117);
+}
+
+.link:hover {
+  background-color: rgb(81, 139, 170);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .link {
+    padding: 1rem 0.7rem;
+  }
 }

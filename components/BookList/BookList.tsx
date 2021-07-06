@@ -27,8 +27,8 @@ export default function BookList({
         <></>
       ) : (
         <>
-          <div style={{ width: '90vw', marginTop: '1rem', padding: '1.1rem' }}>
-            <Typography variant="h4" style={{ fontSize: '1.8rem' }}>
+          <div className={styles.title}>
+            <Typography variant="h4" style={{ fontSize: '1.7rem' }}>
               {shelf ? (
                 <Link href={`/countries/${pathName}`}>
                   <a style={{ textDecoration: 'none' }}>{country}</a>

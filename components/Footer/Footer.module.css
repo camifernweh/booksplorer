@@ -3,4 +3,15 @@
   margin-top: 4rem;
   padding: 1.5rem;
   background-color: #2c5075;
+  display: flex;
+  justify-content: center;
+}
+
+.about {
+  color: #fff;
+  text-decoration: none;
+}
+
+.about:visited {
+  color: #fff;
 }

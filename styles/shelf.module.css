@@ -1,0 +1,13 @@
+.container {
+  margin: 2rem;
+}
+
+.buttonContainer {
+  margin: 1.5rem 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 1.5rem 0;
+  }
+}

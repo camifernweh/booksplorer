@@ -6,3 +6,15 @@
   grid-gap: 1rem;
   margin: 1rem 1rem 2rem 1rem;
 }
+
+.title {
+  width: 90vw;
+  margin-top: 1rem;
+  padding: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .title {
+    width: 80vw;
+  }
+}
