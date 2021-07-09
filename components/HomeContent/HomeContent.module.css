@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 8rem 1.5rem;
+}
+
+.itemContainer {
+  margin: 2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15rem;
+  padding: 1.5rem;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.middle {
+  margin: 0 3rem;
+}
+
+.img {
+  margin-bottom: 1.2rem;
+  width: 6rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

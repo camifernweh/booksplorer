@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import BookList from '../BookList/BookList';
 import styles from './ShelfWantToRead.module.css';
-import { FormatColorReset } from '@material-ui/icons';
 
 const getShelfProps = () => {
   const countriesArr = [];
@@ -35,7 +34,7 @@ export default function ShelfWantToRead(): React.ReactElement {
     setIsLoading(false);
   }, []);
 
-  const filterBooks = (id: string): void => {
+  const filterShelfBooks = (id: string): void => {
     const filtered = books.filter((book) => book.id !== id);
     if (!filtered.length) setHasBeenEmptied(true);
 
@@ -75,7 +74,7 @@ export default function ShelfWantToRead(): React.ReactElement {
                   country={country}
                   books={filteredBooks}
                   shelf
-                  filterBooks={filterBooks}
+                  filterShelfBooks={filterShelfBooks}
                 ></BookList>
               );
             })

@@ -18,7 +18,7 @@ interface BookItemProps {
   description: string;
   cover: string;
   shelf?: boolean;
-  filterBooks?: (id: string) => void;
+  filterShelfBooks?: (id: string) => void;
 }
 
 export default function BookItem({
@@ -29,7 +29,7 @@ export default function BookItem({
   description,
   cover,
   shelf,
-  filterBooks,
+  filterShelfBooks,
 }: BookItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -86,7 +86,7 @@ export default function BookItem({
         open={isOpen}
         handleClose={handleClose}
         shelf={shelf}
-        filterBooks={filterBooks}
+        filterShelfBooks={filterShelfBooks}
       />
     </div>
   );

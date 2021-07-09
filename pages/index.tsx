@@ -3,6 +3,7 @@ import { Country } from '../lib/types';
 import client from '../apollo/client';
 import { gql } from '@apollo/client';
 import Header from '../components/Header/Header';
+import HomeContent from '../components/HomeContent/HomeContent';
 import Map from '../components/Map/Map';
 
 export interface CountriesProps {
@@ -15,6 +16,7 @@ export default function Home({
   return (
     <Layout title="Home">
       <Header />
+      <HomeContent />
       <Map countries={countries} />
     </Layout>
   );

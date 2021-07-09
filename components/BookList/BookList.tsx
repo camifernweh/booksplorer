@@ -10,14 +10,14 @@ interface BookListProps {
   country: string;
   books: Book[];
   shelf?: boolean;
-  filterBooks?: (id: string) => void;
+  filterShelfBooks?: (id: string) => void;
 }
 
 export default function BookList({
   country,
   books,
   shelf,
-  filterBooks,
+  filterShelfBooks,
 }: BookListProps): React.ReactElement {
   const pathName = getPathFromName(country);
 
@@ -55,7 +55,7 @@ export default function BookList({
                   description={book.description}
                   cover={cover}
                   shelf={shelf}
-                  filterBooks={filterBooks}
+                  filterShelfBooks={filterShelfBooks}
                 />
               );
             })}

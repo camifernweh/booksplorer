@@ -15,7 +15,7 @@ interface BookDetailsProps {
   cover: string;
   open: boolean;
   shelf?: boolean;
-  filterBooks?: (id: string) => void;
+  filterShelfBooks?: (id: string) => void;
   handleClose: () => void;
 }
 
@@ -36,7 +36,7 @@ export default function BookDetails({
   cover,
   open,
   shelf,
-  filterBooks,
+  filterShelfBooks,
   handleClose,
 }: BookDetailsProps) {
   const [isOnShelf, setIsOnShelf] = useState(false);
@@ -56,7 +56,7 @@ export default function BookDetails({
     } else {
       localStorage.removeItem(id);
       setIsOnShelf(false);
-      if (shelf) filterBooks(id);
+      if (shelf) filterShelfBooks(id);
     }
   };
 
@@ -77,7 +77,7 @@ export default function BookDetails({
     } else {
       localStorage.removeItem(title);
       setMarkedAsRead(false);
-      if (shelf) filterBooks(id);
+      if (shelf) filterShelfBooks(id);
     }
   };
 
