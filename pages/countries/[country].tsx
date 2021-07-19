@@ -35,7 +35,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const countryName = getNameFromPath(params.country);
 
   const { data } = await client.query({
