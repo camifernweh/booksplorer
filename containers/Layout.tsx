@@ -26,7 +26,7 @@ export default function Layout({
         <title>{titleToBeDisplayed}</title>
       </Head>
       {!isHome && <NavBar />}
-      <main className={isHome ? null : styles.margin}>{children}</main>
+      <main className={isHome ? styles.home : styles.margin}>{children}</main>
       <Footer />
     </div>
   );

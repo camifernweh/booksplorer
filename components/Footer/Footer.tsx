@@ -13,10 +13,7 @@ export default function Footer(): React.ReactElement {
         color="secondary"
         style={{ fontSize: '1rem', letterSpacing: '0.09rem' }}
       >
-        &copy; {year} Booksplorer |{' '}
-        <a href="/about" className={styles.about}>
-          About
-        </a>
+        &copy; {year} Booksplorer
       </Typography>
     </footer>
   );
