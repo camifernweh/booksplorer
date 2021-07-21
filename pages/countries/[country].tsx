@@ -3,7 +3,6 @@ import client from '../../apollo/client';
 import { gql } from '@apollo/client';
 import { createPathStrings, getNameFromPath } from '../../lib/utils/strings';
 import { Country as CountryInterface } from '../../lib/types';
-import { Typography } from '@material-ui/core';
 import BookList from '../../components/BookList/BookList';
 
 interface CountryProps {
@@ -35,7 +34,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   const countryName = getNameFromPath(params.country);
 
   const { data } = await client.query({

@@ -18,12 +18,12 @@ export default function NavBar() {
       <div className={styles.linkContainer}>
         <Link href="/shelf">
           <a className={styles.link}>
-            <Typography>My Books</Typography>
+            <Typography style={{ fontSize: '1.1rem' }}>My Books</Typography>
           </a>
         </Link>
         <Link href="/#explore">
           <a className={styles.link}>
-            <Typography>Explore</Typography>
+            <Typography style={{ fontSize: '1.1rem' }}>Explore</Typography>
           </a>
         </Link>
       </div>

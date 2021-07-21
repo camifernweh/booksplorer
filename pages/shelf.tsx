@@ -15,7 +15,7 @@ export default function MyShelf(): React.ReactElement {
   const buttonStyle = {
     active: {
       color: 'rgb(255, 255, 255)',
-      backgroundColor: 'rgb(81, 139, 170)',
+      backgroundColor: 'rgb(44, 80, 117)',
       padding: '0.7rem',
     },
     normal: {
