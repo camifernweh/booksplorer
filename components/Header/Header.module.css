@@ -1,7 +1,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   background: #2c5075;
@@ -17,13 +16,17 @@
   justify-content: center;
   align-items: center;
   bottom: 0;
-  width: 100%;
   cursor: pointer;
   height: 2.5rem;
 }
 
 .arrow {
   position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
   animation: up-and-down 1.5s infinite;
 }
 
@@ -36,5 +39,12 @@
   50% {
     opacity: 1;
     top: -1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    justify-content: flex-start;
+    padding-top: 10rem;
   }
 }
