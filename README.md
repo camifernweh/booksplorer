@@ -1,5 +1,9 @@
 # :book: Booksplorer
 
+<p align="center">
+  <img src="./readme-images/booksplorer-readme.gif">
+</p>
+
 Booksplorer is a book recommendation PWA (Progressive Web App) that allows users to to read more diversely by exploring titles across the globe.
 
 ## :books: Tech Stack
